@@ -9,7 +9,7 @@ Karachi
 Guangzhou
 Istanbul
 Tokyo
-Tianjin
+TianjinB
 Moscow
 Sao Paulo
 Kinshasa

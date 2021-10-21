@@ -28,7 +28,7 @@ public class Hangman {
     }
 
     public void gameStart(){
-        System.out.println(this.guessCity);
+        //System.out.println(this.guessCity);
         System.out.println("Here's the question.");
         for (int c = 0; c != this.guessCity.length(); c++){
             char checkChar = this.guessCity.charAt(c);
@@ -43,4 +43,5 @@ public class Hangman {
         System.out.println();
         guessAndMatch(this.guessCity, theBlank.toString());
     }
+
 }

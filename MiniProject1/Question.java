@@ -1,5 +1,6 @@
 package MiniProject.MiniProject1;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Question {
@@ -9,9 +10,16 @@ public class Question {
         String wrongs = "";
         int tries = Number_Of_Tries;
         while (true){
-            System.out.print("Guess a letter: ");
-            Scanner in = new Scanner(System.in);
-            char guessInput = in.next().charAt(0);
+            char guessInput;
+            while (true){
+                System.out.print("Guess a letter: ");
+                Scanner in = new Scanner(System.in);
+                //char guessInput = in.next().charAt(0);
+                guessInput = in.next().charAt(0);
+                if(ifGuessValid(guessInput) && isSameGuess(guessInput,theBlank,wrongs)){
+                    break;
+                }
+            }
             System.out.printf("You are guessing: %c \n", guessInput);
             String[] checkReturn = checkMatch(guessInput, city, theBlank);
             theBlank = checkReturn[0];
@@ -51,5 +59,24 @@ public class Question {
 
     public static boolean ifGuessed(String word){
         return !word.contains("_");
+    }
+
+    public static boolean ifGuessValid(char input){
+        if (!Character.isAlphabetic(input)) {
+            System.out.println("Please enter only a letter");
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isSameGuess(char input, String theBlank, String mistakes){
+        if(theBlank.toLowerCase().contains(Character.toString(input)) || theBlank.toUpperCase().contains(Character.toString(input))){
+            System.out.println("You already guessed that! ");
+            return false;
+        } else if (mistakes.contains(Character.toString(input))){
+            System.out.println("You already tried that!");
+            return false;
+        }
+        return true;
     }
 }
